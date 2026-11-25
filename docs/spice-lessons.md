@@ -64,6 +64,16 @@ Three tenths of a volt of zener tolerance spans "off" to "eating the supply". Wi
 
 Done 2026-11-25.
 
-### Next
+## Lesson 4 (planned): comparator level shift, both directions
 
-DC sweep: new simulation tab, DC, sweep I1 from 0 to 100m in 1m steps, plot v15 against load current; one run replaces a load-step series. Then the clock sheet.
+Goal: see the receive stage work in simulation before the clock sheet. Two circuits in the `spice-tests` project, each on its own sub-sheet.
+
+**Down, 15 V in to 5 V out.** This is sheet 5 of the host interface. VPULSE 0 to 15 V (`y1=0 y2=15 td=1u tr=50n tf=50n tw=2u per=5u`) through 10k into the comparator's inverting input. Reference on the non-inverting input: 3.0k from 15 V and 10k to ground, 11.54 V. Comparator powered from 15 V. Open-collector output pulled up to 5 V through 2.2k (the design uses 3.3 V; try both). 1M from output back to the non-inverting input for hysteresis. Probe the input, the reference and the output. Expect: output low while the input is above 11.5 V (4004 logic 0), output at the pull-up rail while the input is below it (4004 logic 1), about 33 mV of hysteresis at the reference, and a delay from input crossing to output edge. That delay is bench measurement M8.
+
+**Up, 5 V in to 15 V out.** Same comparator powered from 15 V. VPULSE 0 to 5 V into the non-inverting input through 10k; reference 2.5 V on the inverting input from two 10k. Open collector pulled up to 15 V through 4.7k. Expect a 0 to 15 V swing with the edge rate set by 4.7k into the load capacitance. Add 20 pF on the output to see what a 4004 pin would do to the rising edge; that is the limit of a pull-up as a 15 V driver and the reason the design uses a P-FET for the bus lines.
+
+**Comparator model.** Search the `Simulation_SPICE` library first for a comparator or an op-amp symbol. An ideal op-amp with the rails set to 15 V and 0 V works as a comparator for levels and thresholds but says nothing about delay. For delay, use TI's LM2901 SPICE model (from the LM2901 product page under Design tools) through Properties > Simulation Model > SPICE model from file. The LM2901's inputs must stay 1.5 V below its supply, which is why the 10k series resistors are there.
+
+Unit traps from lesson 3 still apply: `bv=16` not `16m`, `ibv=15.5m`, `Sim.Pins 1=K 2=A` on `Device:D_Zener`.
+
+Then: the DC sweep (sweep I1 from 0 to 100m, plot v15 against load current), and the clock sheet with a CD4504B stand-in.

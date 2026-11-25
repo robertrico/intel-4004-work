@@ -1,0 +1,16 @@
+Reference,Qty,MPN,Manufacturer,Description,Package,Purpose
+DC1,1,TMR 1-0513,TRACO Power,Isolated regulated DC/DC 5V to single 15V 1W 67mA (NOT the 0523 which is dual +/-15V at 33mA),SIP-6 through-hole,Standalone 15V rail that holds 15V +/-5% without a bench supply. Budget: 4004 40mA + 3x LM2901 6mA max + CD4504 + leakage. No static pull-up current after the 2.7 redesign
+DC2,1,ROE-0515S,RECOM,Isolated unregulated DC/DC 5V to 15V 1W 66mA,SIP-4 through-hole,RetroShield reference rail; measure its drift against DC1
+D1 D2,2,1N4745A,onsemi,16V 1W zener,DO-41 axial,Rail clamp (abs max is 20V below VSS)
+D3 D4 D5,3,1N4734A,onsemi,5.6V 1W zener,DO-41 axial,Rail-up LED threshold (RetroShield style)
+F1,1,MF-R025,Bourns,Resettable fuse 250mA hold,Radial,5V feed protection
+C1-C10,10,C330C105K5R5TA,KEMET,1uF 50V X7R ceramic,Radial,Module and chip rail caps
+C11 C12,2,ECA-1CM101,Panasonic,100uF 16V electrolytic,Radial,Bulk on 5V
+R1-R10,10,CFR-50JB-52-1K,Yageo,1k 5% 1/2W,Axial,Dummy load 15mA each for DMM rail tests
+Q1-Q10,10,BS170,onsemi,N-channel MOSFET 60V 500mA VGS(th) 0.8-3.0V,TO-92,Open-drain low side: TEST + RESET (10k pull-up) + 4 bus lines + 4 spares. Gates from 5V AHCT541 (3.3V not enough for a 3.0V threshold part). NOT used on clocks: Coss 20pF would force a 450 ohm pull-up
+Q11-Q16,6,TP0606N3-G-P002,Microchip Technology,P-channel MOSFET 60V 7 ohm max at VGS -5V,TO-92,High side of tri-state bus driver x4 + 2 spares. Gate from CD4504B at 0/15V (VGS max +/-20V)
+U1 U8,2,CD4504BE,Texas Instruments,Hex level shifter 5V to 15V,PDIP-16,Six channels: phi1 + phi2 driven directly (40ns typ 80ns max into 50pF per cd4504b.pdf) + 4 P-FET gates. Second part is the spare since all six channels are used
+U2 U3,2,SN74AHCT541N,Texas Instruments,Octal buffer TTL inputs at 5V,PDIP-20,3.3V FPGA to 5V: 6 BS170 gates + 6 CD4504 inputs = 12 of 16 channels
+U4 U5 U6,3,LM2901N,Texas Instruments,Quad comparator 0.8mA/quad,PDIP-14,All 9 4004 outputs. Runs from +15V so the reference can sit at 11.5V (VICR max is VCC-2V). Open collector pulled to 3.3V. 0.3us typ response at this overdrive
+U7,1,LM319N/NOPB,Texas Instruments,Dual high-speed comparator 80ns,PDIP-14,Fallback for 2 bus lines if LM2901 proves too slow. Needs 2:1 divider on the signal and 5.75V reference (differential input abs max +/-5V). 8mA typ per package
+XU1 XU2,2,110-43-316-41-001000,Mill-Max,16-pin machined DIP socket,DIP-16,4004 socket for test board and final board

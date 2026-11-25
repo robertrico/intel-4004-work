@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+
+  (lib (name "4004_host") (type "KiCad") (uri "${KIPRJMOD}/4004-host-interface.kicad_sym") (options "") (descr "")))

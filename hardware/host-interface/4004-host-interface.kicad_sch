@@ -1,0 +1,303 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "230f0e2d-d6ee-421e-af6b-9d66de40b094")
+	(paper "A4")
+	(title_block
+		(title "4004 host interface")
+		(date "2026-11-23")
+		(rev "v2")
+		(company "Robert Rico")
+		(comment 1 "6 sheets: power, clock, host buffers, line drivers, receivers, 4004 socket")
+	)
+	(lib_symbols)
+	(text "4004 on 0/+15 V; TTL clock 24.545 MHz /12, 489 ns tick, 1.956 us period; host 3.3 V. Every +15 V reference is one node."
+		(exclude_from_sim no)
+		(at 20 30 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "32d2b4ac-027d-40ea-b6a7-38a6eed856ac")
+	)
+	(sheet
+		(at 100 110)
+		(size 60 30)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "238ec4f3-7d62-4340-adaf-dc3756d06280")
+		(property "Sheetname" "5 Receivers"
+			(at 100 109.365 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "receivers.kicad_sch"
+			(at 100 140.635 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "4004-host-interface"
+				(path "/230f0e2d-d6ee-421e-af6b-9d66de40b094"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 180 50)
+		(size 60 30)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "4cb28ef7-d685-49ba-984f-b0f1d02d848f")
+		(property "Sheetname" "3 Host buffers and gating"
+			(at 180 49.365 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "host_buffers.kicad_sch"
+			(at 180 80.635 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "4004-host-interface"
+				(path "/230f0e2d-d6ee-421e-af6b-9d66de40b094"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 100 50)
+		(size 60 30)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "a60155f3-44d6-4fea-99d1-ffa198b3671a")
+		(property "Sheetname" "2 Clock"
+			(at 100 49.365 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "clock.kicad_sch"
+			(at 100 80.635 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "4004-host-interface"
+				(path "/230f0e2d-d6ee-421e-af6b-9d66de40b094"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 20 110)
+		(size 60 30)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "c7246d3b-4c0a-4a68-9a70-2c624d2fb674")
+		(property "Sheetname" "4 Data line drivers"
+			(at 20 109.365 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "line_drivers.kicad_sch"
+			(at 20 140.635 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "4004-host-interface"
+				(path "/230f0e2d-d6ee-421e-af6b-9d66de40b094"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 180 110)
+		(size 60 30)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "ca68c28f-c6b9-446a-b9ea-9300dae10576")
+		(property "Sheetname" "6 4004 socket RESET TEST"
+			(at 180 109.365 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "socket_4004.kicad_sch"
+			(at 180 140.635 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "4004-host-interface"
+				(path "/230f0e2d-d6ee-421e-af6b-9d66de40b094"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 20 50)
+		(size 60 30)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "de361f81-867c-4c76-8d01-0c246d6aa99a")
+		(property "Sheetname" "1 Power"
+			(at 20 49.365 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 20 80.635 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "4004-host-interface"
+				(path "/230f0e2d-d6ee-421e-af6b-9d66de40b094"
+					(page "2")
+				)
+			)
+		)
+	)
+	(embedded_fonts no)
+)

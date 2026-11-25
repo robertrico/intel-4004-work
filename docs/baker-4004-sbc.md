@@ -33,7 +33,7 @@ In the +15 V / 0 V arrangement, those same TTL sides would sit at +15 V and +10 
 - **The +15 / 0 arrangement is right for the bench harness**, where an FPGA reads the 4004 bus directly through comparators and no MCS-40 peripheral is on the bus.
 - The 4004 does not care; it only sees 15 V between VSS and VDD. The same chip moves between the two boards.
 
-the donor's HP exerciser has a +5 V test point and the Pro-Log board has +V / −V posts, consistent with both of them being +5 / −10 machines.
+the owner's HP exerciser has a +5 V test point and the Pro-Log board has +V / −V posts, consistent with both of them being +5 / −10 machines.
 
 ## How Baker crosses from MOS to TTL without level shifters
 
@@ -94,7 +94,7 @@ RAM-less board 155 mA, two 4002 221 mA, six 4002 353 mA. All of that is on the �
 3. **The clock board we are building is bench-only as drawn.** Its timing section (24.545 MHz, S163, LS163A, LS74, LS00) carries over to either machine. Its level stage (CD4504 at 0 / 15 V) does not carry to a +5 / −10 machine. For that machine: a real 4201, or a driver that swings +5 to −10 from TTL timing, which is the drive-side problem from `pmos-level-shifting-notes.md` section 2.6 again (P-channel FET from +5 with a pull-down to −10, or a push-pull pair). Not designed.
 4. **Reset and TEST crossing** for the +5 / −10 machine: copy Baker's Schottky-and-10 k pattern. It is two parts per line and it is what the firmware expects.
 
-## Questions for the donor that this raises
+## Questions for the boards' owner that this raises
 
 - Did the HP exerciser or the Pro-Log board use a 4201, or a discrete clock? (The HP has 9602 one-shots, so discrete; the Pro-Log has a crystal can and Motorola CMOS near it, unknown. The 4201 was "available first quarter 1975" per the User's Manual, after both boards' date codes, so probably neither.)
 - Does he have, or know a source for, a 4201, a 4289 or a 4265? The Pro-Log's 4008/4009 pair does the 4289's job if it works.

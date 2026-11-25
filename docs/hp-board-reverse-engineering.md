@@ -1,6 +1,6 @@
 # HP MCS-4 Exerciser COS-2: reverse engineering plan
 
-the donor has no documentation for this board. The board is the only source. Goal: a complete schematic and a parts list with every part identified, before any power. All work power off, with a multimeter, a magnifier and good light. Same method afterwards for the Pro-Log card.
+the boards' owner has no documentation for this board. The board is the only source. Goal: a complete schematic and a parts list with every part identified, before any power. All work power off, with a multimeter, a magnifier and good light. Same method afterwards for the Pro-Log card.
 
 ## 0. Record before touching
 
@@ -63,7 +63,7 @@ From each 4004 pin outward, then from each test point inward. Continuity mode, o
 
 ## 5. Draw it
 
-Redraw as a schematic, KiCad through Konnect (or on paper first). Commit the drawing and the parts table here. Send to the donor for a second pair of eyes; they can check the logic while the meter work continues.
+Redraw as a schematic, KiCad through Konnect (or on paper first). Commit the drawing and the parts table here. Send to the boards' owner for a second pair of eyes; they can check the logic while the meter work continues.
 
 ## Exit criteria before any power
 
@@ -71,4 +71,4 @@ Redraw as a schematic, KiCad through Konnect (or on paper first). Commit the dra
 - Every transistor typed and pinned.
 - Every capacitor checked for shorts; failed ones replaced.
 - Clock circuit drawn with its R and C values, with a predicted period and pulse width to compare against the scope later.
-- Schematic reviewed with the donor.
+- Schematic reviewed with the boards' owner.

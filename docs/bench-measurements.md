@@ -13,5 +13,5 @@ Running list. Each entry comes from the simulation, a design review, or a datash
 | M7 | TP0606 turn-off time with the 680 ohm gate resistor | Sets the bus release delay parameter (default 0) | Stage 0 B6 | recorded | |
 | M8 | LM2901 propagation delay at 11.5 V reference, 15 V swing | Sampling margin estimate of 250 ns assumes the datasheet typical | Stage 0 B8 | recorded | |
 | M9 | TP0606 pin order by diode test | The KiCad symbol assumes S=1, G=2, D=3 | before building sheet 4 | matches, or symbol corrected | |
-| M10 | Tantalums on the donated boards for shorts | Age | HP board static plan step 2 | none shorted | |
+| M10 | Tantalums on the loaned boards for shorts | Age | HP board static plan step 2 | none shorted | |
 | M11 | HP board ground symbol vs the -10 V entry | The silk says GND near the 5 V entry; whether that is 0 V or -10 V decides which rail is which | HP board static plan step 3 | continuity recorded | |

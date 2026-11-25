@@ -787,8 +787,8 @@ Bus turnaround:
 
 ### 2.6 The benefactor's suggested 4004 interface, checked
 
-the chip donor sent two circuit ideas on 2026-11-06, both assuming
-VSS = +15 V and VDD = ground. Tag for this whole section: the donor's text is
+the boards' owner sent two circuit ideas on 2026-11-06, both assuming
+VSS = +15 V and VDD = ground. Tag for this whole section: the owner's text is
 [MEM]-grade input from an experienced engineer, and every number below that
 checks it is [DS] or [CALC] unless marked otherwise.
 
@@ -882,16 +882,16 @@ What this means for the +5 V and -10 V decision in section 3.2:
   8008 receive circuit unchanged. With a 10k series resistor the clamp draws
   about 0.1 mA from a pin sitting at -1.5 V, inside the 0.5 mA budget [CALC].
   Intel's pull-down to VDD on each output stays.
-- So on 2026-11-06 the decision stood on the evidence. the donor's two ideas are
-  both sound for the donor's arrangement and the drive side is equivalent either way.
+- So on 2026-11-06 the decision stood on the evidence. the owner's two ideas are
+  both sound for the owner's arrangement and the drive side is equivalent either way.
   The shifted-ground arrangement keeps the simpler receive side and the shared
   8008 circuit. The one thing the +15 V arrangement wins is that no
   regulator sits between the module and the chip.
 
 Decision revised 2026-11-13: the chip actually being sent is a 4004, with no
 8008. The shared receive circuit was the only argument for +5 V and -10 V, and
-it no longer applies. The first 4004 board uses the donor's arrangement, VSS at
-+15 V and VDD at ground, with the donor's two circuits:
+it no longer applies. The first 4004 board uses the owner's arrangement, VSS at
++15 V and VDD at ground, with the owner's two circuits:
 
 - Inputs: BS170 open drain, source to ground, drain to the pin, pull-up to
   +15 V. 680 ohms on the clocks for the 50 ns edge, 10k on TEST and RESET.
@@ -907,7 +907,7 @@ it no longer applies. The first 4004 board uses the donor's arrangement, VSS at
   measure how far the unregulated RetroShield rail drifts. Bench supply with
   a 60 mA current limit for the first power-up of the real chip.
 
-### 2.7 Datasheet check of the parts in the donor's circuit
+### 2.7 Datasheet check of the parts in the owner's circuit
 
 Read 2026-11-13. onsemi BS170 datasheet, BS170/D Rev. 7, November 2017 [DS].
 TI LM139/LM239/LM339/LM2901 datasheet, SLCS006Z, revised May 2025 [DS].
@@ -917,7 +917,7 @@ BS170 [DS BS170/D p.2 table, p.3 Figures 3, 4, 6]:
 
 | Parameter | Datasheet | Note |
 |---|---|---|
-| VGS(th) | 0.8 min, 2.0 typ, 3.0 max V at ID = 1 mA | the donor's "2.1 V" is the typical. Worst case 3.0 V |
+| VGS(th) | 0.8 min, 2.0 typ, 3.0 max V at ID = 1 mA | the owner's "2.1 V" is the typical. Worst case 3.0 V |
 | rDS(on) | 1.8 typ, 5.0 max ohm at VGS = 10 V, ID = 200 mA | Only guaranteed at 10 V gate drive |
 | Figure 4, on region, typical | at VGS = 5 V about 0.3 A at VDS = 1 V, so roughly 3 ohms; at VGS = 4 V about 0.1 A, roughly 10 ohms | Typical curves, not limits. No curve below 4 V |
 | ID continuous | 0.5 A | |
@@ -957,7 +957,7 @@ LM2901 [DS SLCS006Z sections 6.1, 6.9, 6.13, notes]:
 | Supply | 2 to 36 V (30 V for the LM2901 electrical table) | 15 V is fine |
 | Input voltage, absolute maximum | -0.3 V to 36 V, either input | Nothing negative in the +15 V arrangement |
 | VICR | 0 to VCC - 1.5 V at 25 C, 0 to VCC - 2 V over temperature | |
-| Note on VICR | "one input can exceed VCC, and the comparator provides a proper output state as long as the other input remains in the common-mode range. Either or both inputs can go to 30 V without damage." | the donor was right, section 2.6 was wrong on this point |
+| Note on VICR | "one input can exceed VCC, and the comparator provides a proper output state as long as the other input remains in the common-mode range. Either or both inputs can go to 30 V without damage." | the boards' owner was right, section 2.6 was wrong on this point |
 | Response time | 1.3 us typ, 100 mV step with 5 mV overdrive; 0.3 us typ, TTL-level input step. No maximum. | |
 | Output | open collector; IOL 6 mA min at VOL 1.5 V; VOL 400 mV max at 4 mA | Pull-up to 3.3 V is allowed |
 | Input bias current | 25 nA typ, 250 nA max | Invisible against the 4004's 10 uA leakage |
@@ -969,7 +969,7 @@ Conclusions for the receive side:
   output, provided the reference input is inside the range.
 - The threshold objection stands and gets a reason. At VCC = 5 V the
   reference must stay below VCC - 2 V, so 3 V over temperature. That is why
-  the donor's 3.5 V appears: it is the highest reference a 5 V comparator can
+  the owner's 3.5 V appears: it is the highest reference a 5 V comparator can
   take. But the 4004 low can be as high as 8.5 V, so a 3 V reference reads
   in-spec lows as highs. The threshold has to sit near 11.5 V, and a
   reference at 11.5 V needs VCC of at least 13.5 V. So the comparator runs
@@ -1429,7 +1429,7 @@ Rails:
   prior designs use unregulated isolated modules, which rise when lightly
   loaded. A simpler alternative to the 78L09 arrangement is an isolated 5 V to
   9 V module with its positive output grounded and a 9 V zener across it
-  (1.8). It has more current headroom and looser regulation. With donated
+  (1.8). It has more current headroom and looser regulation. With loaned
   chips I would keep the regulator.
 - Optionally give the FPGA a way to switch VDD on. The RetroShield manages
   without one (see 1.7), but it makes power-up experiments repeatable.

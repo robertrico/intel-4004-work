@@ -2,12 +2,12 @@
 
 Work toward running a real Intel 4004 safely, and eventually building a standalone 4004 calculator with no FPGA in it.
 
-The chips are a donation: two 1970s boards, an HP MCS-4 Exerciser (COS-2) and a Pro-Log PWM 100674XA, each carrying a white ceramic C4004 with its 4001/4002/4008/4009/1702A companions. They are scarce and effectively irreplaceable, so chip safety outranks convenience everywhere in this repo. Nothing with a chip in it gets power until the empty-socket bench plan passes.
+The chips are on loan: two 1970s boards, an HP MCS-4 Exerciser (COS-2) and a Pro-Log PWM 100674XA, each carrying a white ceramic C4004 with its 4001/4002/4008/4009/1702A companions. They are scarce and effectively irreplaceable, so chip safety outranks convenience everywhere in this repo. Nothing with a chip in it gets power until the empty-socket bench plan passes.
 
 ## Plan
 
 1. **Bench harness.** A 3.3 V host (ECP5 FPGA first, Pico 2 as the alternative) drives and reads a 4004 through discrete level shifting. Rails VSS +15 V, VDD ground. Drive side: CD4504B for the two clocks and for the gates of TP0606 P-FETs that make a tri-state push-pull on the four bus lines, BS170 open drain for TEST and RESET. Receive side: LM2901 comparators from +15 V against an 11.5 V reference, open collector pulled up to 3.3 V. The FPGA is bench gear only.
-2. **Reverse-engineer the donated boards**, statically, with a meter and power off, before any of them sees power.
+2. **Reverse-engineer the loaned boards**, statically, with a meter and power off, before any of them sees power.
 3. **Standalone calculator.** Intel's +5 / −10 V rails, real MCS-40 parts for clock, memory and I/O. The TTL clock timing section carries over from the harness; its CD4504B level stage does not.
 
 ## Layout
@@ -19,7 +19,7 @@ The chips are a donation: two 1970s boards, an HP MCS-4 Exerciser (COS-2) and a 
 | `docs/bench-measurements.md` | Running list of things the simulation or the design review said to measure on the bench, with results as they come in. |
 | `docs/clock-generator.md` | Two-phase 4004 clock in TTL from shelf parts: 24.545 MHz can, 74S163, 74LS163A, 74LS74, 74LS00, CD4504B. Pin tables and scope checklist. |
 | `docs/pattern-generator-555-cd4029.md` | NE555 + CD4029B at 15 V, a four-line 0 / 15 V counting pattern that stands in for the 4004 on the bench. |
-| `docs/pmos-level-shifting-notes.md` | The analysis: 4004 datasheet limits, the donor's circuit checked against them, every part's datasheet numbers. Section 1 is earlier 8008 reasoning that led here. |
+| `docs/pmos-level-shifting-notes.md` | The analysis: 4004 datasheet limits, the owner's circuit checked against them, every part's datasheet numbers. Section 1 is earlier 8008 reasoning that led here. |
 | `docs/spice-lessons.md` | Learning the KiCad simulator (ngspice) lesson by lesson, with the power sheet simulated and the clamp-zener tolerance experiment. |
 | `docs/baker-4004-sbc.md` | Scott Baker's 4004/4040 SBC read as prior art for the calculator: Intel rails, 4201 clock, 4289 and 4265 as the level shifters. |
 | `docs/hp-board-reverse-engineering.md` | Five-step static plan for the HP board. |
@@ -32,7 +32,7 @@ The chips are a donation: two 1970s boards, an HP MCS-4 Exerciser (COS-2) and a 
 
 ## Conventions
 
-- Intel datasheets and measurement are the authority. Prior-art boards and the donor's circuit are evidence.
+- Intel datasheets and measurement are the authority. Prior-art boards and the owner's circuit are evidence.
 - Guaranteed margins over typical values.
 - KiCad files are edited in KiCad or through tooling that preserves them, never by hand.
 - Through-hole only.
